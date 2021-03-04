@@ -1,0 +1,17 @@
+<div class="site-contents">
+    <div class="room-new-container contents-width">
+        <h3 class="room-text">ルーム編集</h3>
+        <%= form_tag("/rooms/#{@room.id}/update",{multipart:true}) do %>
+        <div class="room-forms">
+            <input class="room-form" name="room_name" placeholder="ルームの名前" value="<%= @room.room_name %>">
+            <input class="room-form" name="adress" placeholder="住所" value="<%= @room.adress %>">
+            <textarea class="room-textarea" name="introduction" placeholder="ルーム紹介文" rows="8" cols="40"><%= @room.introduction %></textarea>
+            <input class="room-form" name="price" placeholder="一泊あたりの金額" value="<%= @room.price %>">
+            <input class="room-form" type="file" name="room_image">
+            <input class="room-btn" type="submit" value="変更">
+            <%= link_to "ルームを削除する","/rooms/#{@room.id}/destroy",method: :post%>
+            <%= link_to "掲載中の部屋一覧","/users/#{@current_user.id}" %>
+        </div>
+        <% end %>
+    </div>
+</div>

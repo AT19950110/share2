@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TripShare</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+    <div class="site-header">
+    <div class="contents-width">
+        <div class="site-title link"><%= link_to("Trip Share", "/") %></div>
+    <div class="header-right-nav link">
+      <%= form_tag("/search",:method => "get") do %>
+      <%= text_field_tag :search,"",placeholder:"キーワード",class:"home-form"%>
+      <%= submit_tag "探す",class:"button"%>
+    　<%end%>
+      <% if session[:user_id] %>
+      <%= link_to("ルーム登録","/rooms/new")%>
+      <%= link_to("予約一覧","/reservations") %>
+      <div class="header-account">
+      <%= link_to image_tag("/users_img/#{@current_user.user_image}"),"/users/#{@current_user.id}" %>
+      <div class="header-name">
+      <%= link_to(@current_user.name, "/users/#{@current_user.id}")%>
+      </div>
+      </div>
+      <% else %>
+      <%= link_to("ログイン","/login")%>
+      <%= link_to("新規登録","/sign_up")%>
+      <% end %>
+     
+    </div>
+  </div>
+  </div>
+</header>
+ <% if flash[:notice] %>
+  <div class="flash-box">
+    <p class="flash contents-width"><%= flash[:notice] %></p>
+  </div>
+  <% end %>
+  <% if flash[:alert] %>
+  <div class="flash-box">
+    <p class="flash contents-width"><%= flash[:alert] %></p>
+  </div>
+  <% end %>
+    <%= yield %>
+    <fotter class="site-fotter">
+      <p >Trip-Share</p>
+    </fotter>
+  </body>
+</html>

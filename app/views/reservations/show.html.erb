@@ -1,0 +1,44 @@
+　　<div class="site-contents contents-width">
+    <h3 class="room-text">予約ルーム詳細</h3>
+    <div class="room-show-wrap">
+     <div class="room-show-container">
+          <div class="room-show-img">
+              <img src="<%= "/rooms_img/#{@reservation.room.room_image}" %>">
+          </div>
+          </div>
+         <div class="reservation-box">
+          <div class="room-box">
+             <p class="room-name"><%= @reservation.room.room_name %></p>
+             <p class="room-adress"><%= @reservation.room.adress %></p>
+             <p class="room-introduction"><%= @reservation.room.introduction %></p>
+          </div>
+           <table>
+             <tr class="reservation-text table">
+               <th>開始日</th>
+               <td><%= @reservation.start_date %></td>
+             </tr>
+             <tr class="reservation-text table">
+               <th>終了日</th>
+               <td><%= @reservation.end_date %></td>
+             </tr>
+             </tr>
+             <tr class="reservation-text table">
+             <th>人数</th>
+             <td><%= @reservation.group %></td>
+             </tr>
+             <tr class="reservation-text table">
+             <th>合計金額</th>
+             <td>¥<%= @reservation.total_price %></td>
+             </tr>
+              <tr class="reservation-text table">
+             <th>予約日</th>
+             <td><%= @reservation.created_at %></td>
+             </tr>
+            </table>
+            </div>
+        </div>
+         <div class="reservation-edit">
+            <p><%= link_to "ルーム予約を削除する","/reservations/#{@reservation.id}/destroy" ,method: :post,data: {comfirm: "Are you sure?"}%></p>
+            <p><%= link_to "予約部屋一覧","/reservations" %></p>
+        </div>
+    </div>
