@@ -1,0 +1,43 @@
+<div class="site-contents contents-width">
+    <h3 class="room-text">ルーム予約</h3>
+    <div class="room-show-wrap">
+         <div class="room-show-container">
+          <div class="room-show-img">
+              <img src="<%= "/rooms_img/#{@room.room_image}" %>">
+          </div>
+          <div class="room-user">
+          <%= link_to image_tag("/users_img/#{@room.user.user_image}"),"/users/#{@room.user.id}" %>
+          <%= link_to(@user.name, "/users/#{@user.id}")%>
+          </div>
+          <div class="room-box">
+             <p class="room-name"><%= @room.room_name %></p>
+             <p class="room-adress"><%= @room.adress %></p>
+             <p class="room-introduction"><%= @room.introduction %></p>
+          </div>
+        </div>
+         <div class="room-show-container">
+            <p class="price">¥<%= @room.price %>/日</p>
+           <%= form_tag("/reservations/new",method: :get) do%>
+           <div class="room-forms">
+            <p class="show-text">開始日</p>
+            <input class="room-form" type="date" name="start_date">
+            <p class="show-text">終了日</p>
+            <input class="room-form" type="date" name="end_date">
+            <p class="show-text">人数</p>
+            <input class="room-form" type="number" name="group">
+            <input type="hidden" name="room_id" value="<%= @room.id %>">
+             <input type="hidden" name="n1_price" value="<%= @room.price %>">
+            <input type="hidden" name="room_name" value="<%= @room.room_name %>">
+            <input class="room-btn" type="submit" value="予約">
+           </div>
+           <%end%>
+    </div>
+    </div>
+     <div class="room-link">
+      <%if @current_user.id == @room.user_id%>
+            <%= link_to "ルーム情報を変更する","/rooms/#{@room.id}/edit" %>
+      <%end%>
+       <%= link_to "掲載中の部屋一覧","/users/#{@current_user.id}" %>
+        <%= link_to "ルーム情報を変更する","/rooms/#{@room.id}/edit" %>
+        </div>
+    </div>

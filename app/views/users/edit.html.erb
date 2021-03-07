@@ -1,0 +1,32 @@
+<div class="site-contents">
+  <div class="account-container contents-width">
+    <h2 class="account-text">アカウント</h2>
+    <%= form_tag("/users/#{@user.id}/update",{multipart: true}) do %>
+      <div class="account-info">
+        <table>
+        <tr class="account-name">
+          <th>名前</th>
+          <td><input name="name" value="<%= @user.name %>"></td>
+        </tr>
+        <tr class="account-email">
+          <th>メールアドレス</th>
+          <td><input name="email" value="<%= @user.email %>"></td>
+        </tr>
+        <tr class="account-password">
+        <th>パスワード</th>
+        <td><input name="password" value="<%= @user.password %>"></td>
+        </tr>
+         <tr class="account-image">
+        <th>アカウント画像</th>
+        <td><input name="user_image" type="file"></td>
+        </tr>
+         <tr class="account-introduction">
+        <th>自己紹介</th>
+        <td><textarea name="self_introduction" placeholder="ルーム紹介文" rows="8" cols="45"><%= @user.self_introduction %></textarea></td>
+        </tr>
+        </table>
+      </div>
+      <input class="button" type="submit" value="登録">
+      <% end %>
+  </div>
+</div>

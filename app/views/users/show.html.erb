@@ -1,0 +1,49 @@
+<div class="site-contents">
+  <div class="account-show-container contents-width">
+    <h2 class="account-text">アカウント</h2>
+      <div class="account-info">
+        <table>
+        <tr class="account-name">
+          <th>名前</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr class="account-email">
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr class="account-password">
+        <th>パスワード</th>
+        <td>*********</td>
+        </tr>
+        <tr class="account-image">
+        <th>アカウント画像</th>
+        <td><img src="<%= "/users_img/#{@user.user_image}" %>"></td>
+        </tr>
+         <tr class="account-introduction">
+        <th>自己紹介</th>
+        <td><%= @user.self_introduction %></td>
+        </tr>
+        </table>
+      </div>
+      <% if @user.id == @current_user.id%>
+      <p><%= link_to "編集","/users/#{@user.id}/edit"%></p>
+      <p><%= link_to("ログアウト","/logout",method: :post)%></p>
+      <%end%>
+  </div>
+  <h2 class="account-text">掲載中のルーム一覧</h2>
+  <div class="room-contents-wrap room-index">
+  <% @user.rooms.each do |room| %>
+      <div class="room-container">
+          <div class="room-img">
+            <%= link_to image_tag("/rooms_img/#{room.room_image}"),"/rooms/#{room.id}" %>
+          </div>
+          <div class="room-box">
+             <p class="room-name"><%= room.room_name %></p>
+             <p class="room-adress"><%= room.adress %></p>
+             <p class="room-price">¥<%= room.price %></p>
+          </div>
+      </div>
+    <%end%>
+    </div>
+</div>
+
