@@ -1,0 +1,35 @@
+<div class="site-contents">
+    <div class="main-conainer background">
+        <div class="form-box contents-width">
+            <h3 class="form-text"><span>Trip Share </span>でまだ体験したことのない旅をしよう</h3>
+            <div class="forms">
+             <%= form_tag("/search",:method => "get") do %>            
+             <%= text_field_tag :adress,"",placeholder:"エリア",class:"form"%>
+             <%= submit_tag "探す",class:"button"%>
+            <%end%>
+            </div>
+        </div>
+    </div>
+    <div class="main-conainer contents-width">
+        <h3 class="area-text">おすすめのエリア</h3>
+        <div class="area-contents">
+            <div class="area-content">
+               <%= link_to image_tag("/site_img/tokyo.jpg"),"/search?search=東京" %>
+               <p>東京</p>
+            </div>
+            <div class="area-content">
+                 <%= link_to image_tag("/site_img/kyoto.jpeg"),"/search?search=京都"%>
+                  <p>京都</p>
+            </div>
+            <div class="area-content">
+                 <%= link_to image_tag("/site_img/okinawa.jpg"),"/search?search=沖縄"%>
+                  <p>沖縄</p>
+            </div>
+            <div class="area-content">
+                 <%= link_to image_tag("/site_img/sendai.jpg"),"/search?search=仙台"%>
+                  <p>仙台</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="push"></div>

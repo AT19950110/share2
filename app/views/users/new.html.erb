@@ -1,0 +1,17 @@
+<div class="site-contents">
+    <div class="login-container contents-width">
+        <h3 class="login-text">新規登録</h3>
+        <%= form_tag("/users/create",{multipart: true}) do %>
+        <div class="login-forms">
+            <input class="login-form" name="name" placeholder="名前" value="<%= @user.name %>">
+            <input class="login-form" name="email" placeholder="メールアドレス"value="<%= @user.email %>">
+            <input class="login-form"name="user_image" type="file">
+            <textarea class="login-textarea"name="self_introduction" placeholder="自己紹介文(100文字以内で入力してください)"" rows="8" cols="45"><%= @user.self_introduction %></textarea>
+            <input class="login-form" type="password" name="password" placeholder="パスワード">
+            <input class="login-form" type="password" name="repassword" placeholder="パスワード確認">
+            <input class="login-btn" type="submit" value="登録">
+            <%= link_to "ログインはこちら","/login" %>
+        </div>
+         <%end%>
+    </div>
+</div>

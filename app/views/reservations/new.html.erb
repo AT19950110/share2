@@ -1,0 +1,42 @@
+<div class="site-contents">
+    <div class="site-contents contents-width">
+    <h3 class="room-text">ルーム予約</h3>
+    <div class="room-show-wrap">
+         <div class="room-show-container">
+          <div class="room-show-img">
+              <img src="<%= "/rooms_img/#{@current_room.room_image}" %>">
+          </div>
+          
+          <div class="room-box">
+             <p class="room-name"><%= @current_room.room_name %></p>
+             <p class="room-adress"><%= @current_room.adress %></p>
+             <p class="room-introduction"><%= @current_room.introduction %></p>
+          </div>
+        </div>
+         <div class="room-show-container">
+            <p class="price">予約確認<p>
+           <%= form_tag("/reservations/create") do %>
+           <div class="room-forms">
+            <p class="show-text">開始日</p>
+            <input class="room-form" type="date" name="start_date"value="<%= @reservation.start_date %>">
+            <p class="show-text">終了日</p>
+            <input class="room-form" type="date" name="end_date"value="<%= @reservation.end_date %>">
+            <p class="show-text">人数</p>
+            <input class="room-form" type="number" name="group" value="<%= @reservation.group %>">
+            <p class="show-text">合計金額  一泊一人あたり¥<%=@reservation.n1_price%></p>
+            <input class="room-form" type="hidden" name="n1_price" value="<%= @reservation.n1_price %>">
+            <input class="room-form" name="total_price" value="<%= @reservation.n1_price * @reservation.group * ( @reservation.end_date - @reservation.start_date).to_i %>"readonly>
+            <input class="room-btn" type="submit" value="予約を確定">
+           <%end%>
+           </div>
+          
+    </div>
+    </div>
+     <div class="room-link">
+      <% if @current_user.id == @current_room.user_id %>
+            <%= link_to "ルーム情報を変更する","/rooms/#{@room.id}/edit" %>
+       <%end%>
+       <%= link_to "掲載中の部屋一覧","/rooms" %>
+        </div>
+    </div>
+</div>

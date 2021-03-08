@@ -1,0 +1,18 @@
+<div class="site-contents">
+  <div class="room-index">
+  <div class="room-contents-wrap">
+    <% @rooms.each do |room| %>
+      <div class="room-container content-width">
+          <div class="room-img">
+            <%= link_to image_tag("/rooms_img/#{room.room_image}"),"/rooms/#{room.id}" %>
+          </div>
+          <div class="room-box">
+             <p class="room-name"><%= room.room_name %></p>
+             <p class="room-adress"><%= room.adress %></p>
+             <p class="room-price">¥<%= room.price %></p>
+          </div>
+      </div>
+    <%end%>
+  </div>
+  </div>
+</div>

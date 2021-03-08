@@ -1,0 +1,18 @@
+<div class="site-contents">
+    <% if @error_message %>
+        <div>
+        <p class="form-error contents-width"><%= @error_message %>
+        </div>
+        <% end %>
+    <div class="login-container contents-width">
+        <h3 class="login-text">ログイン</h3>
+        <%= form_tag ("/login") do %>
+        <div class="login-forms">
+            <input class="login-form" name="email" placeholder="メールアドレス" value="<%= @email %>">
+            <input class="login-form" name="password" placeholder="パスワード" value="<%= @password %>">
+            <input class="login-btn" type="submit" value="ログイン">
+            <%= link_to "新規登録はこちら","/sign_up" %>
+        </div>
+       <% end %>
+    </div>
+</div>
